@@ -10,7 +10,8 @@ var
     const clsid: TCLSID;
     unkOuter: IUnknown;
     dwClsContext: Longint;
-    const iid: TIID; out pv
+    const iid: TIID;
+    out pv
   ): HRESULT; stdcall;
 
   CoRegisterClassObjectNext: function(
@@ -36,11 +37,13 @@ function CoCreateInstanceCallBack(
   const clsid: TCLSID;
   unkOuter: IUnknown;
   dwClsContext: Longint;
-  const iid: TIID; out pv
+  const iid: TIID; 
+  out pv
 ): HRESULT; stdcall;
 
 function CoRegisterClassObjectCallBack(
-  const clsid: TCLSID; unk: IUnknown;
+  const clsid: TCLSID; 
+  unk: IUnknown;
   dwClsContext: Longint;
   flags: Longint;
   out dwRegister: Longint
