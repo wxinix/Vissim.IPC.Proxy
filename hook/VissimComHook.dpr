@@ -10,10 +10,10 @@ begin
   CollectHooks;
 
   HookAPI(
-  	'ole32.dll',
+    'ole32.dll',
     'CoCreateInstance',
-     @CoCreateInstanceCallback,
-     @CoCreateInstanceNext
+    @CoCreateInstanceCallback,
+    @CoCreateInstanceNext
   );
 
   {$IFDEF DEBUG}
