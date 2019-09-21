@@ -4,7 +4,7 @@ Vissim in-process COM proxy, BOOST Vissim performance x15 faster!
 # About
 Vissim is a widely-used microscopic traffic simulator developed by PTV. It provides a COM-based interface for user-customized applications, invoking Vissim as an out-of-process automation server.
 
-Vissim COM is convenient and powerful, however, it can be slow especially for loop-intensive applications. Albeit the interface is well designed and comprehensive, it ONLY supports out-of-process call site (except its limited event-based COM scripting). When callingVissim COM interface in a simstep-by-step fashion, the run time performance could possibly become unacceptable.
+Vissim COM is convenient and powerful, however, it can be slow especially for loop-intensive applications. Albeit the interface is well designed and comprehensive, it ONLY supports out-of-process call site (except its limited event-based COM scripting). When calling Vissim COM interface in a simstep-by-step fashion, the run time performance could possibly become unacceptable.
 
 - The performance hit is mainly due to the COM marshaling from one program to the other. The performance hit can be further exacerbated when using .NET languages such as C#, or scripting langue such as Python or Matlab, because of .NET COM p/invoke , or the additional run-time overhead of the IDispatch interface.
 
