@@ -2,9 +2,9 @@
 Vissim in-process COM proxy, BOOST Vissim performance x15 faster!
 
 # About
-Vissim is a widely-used microscopic traffic simulator developed by PTV. It provides a COM-based interface for user-customized applications, invoking Vissim as an out-of-process automation server.
+Vissim is the most widely-used and industry microscopic traffic simulator developed by PTV. It provides a COM-based interface for user-customized applications, invoking Vissim as an out-of-process automation server.
 
-Vissim COM is convenient and powerful, however, it can be slow especially for loop-intensive applications. Albeit the interface is well designed and comprehensive, it ONLY supports out-of-process call site (except its limited event-based COM scripting). When calling Vissim COM interface in a simstep-by-step fashion, the run time performance could possibly become unacceptable.
+Vissim COM is convenient and powerful, however, it can be slow especially for loop-intensive applications. Albeit the interface is well designed and comprehensive, it ONLY supports out-of-process call site (except its performance-constrained event-based COM scripting, which is in-process COM). When calling Vissim COM interface in a simstep-by-step fashion, the run time performance could possibly become unacceptable.
 
 - The performance hit is mainly due to the COM marshaling from one program to the other. The performance hit can be further exacerbated when using .NET languages such as C#, or scripting langue such as Python or Matlab, because of .NET COM p/invoke , or the additional run-time overhead of the IDispatch interface.
 
@@ -12,7 +12,7 @@ So I made this "hack" to Vissim COM model.
 
 It implements a zero-overhead proxy that enables Vissim COM as in-process COM. In other words, we no longer have to invoke Vissim as an out-of-process automation server. Better, we now have access to all the functionalities (theoretically) in the same process space as the Vissim host. This will greatly improve the run time performance, which in my case, boosting the speed as much as ~x15 faster. Your mileage may vary, though.
 
-# Vissim COM is slow, how do we improve it?
+# Vissim COM can be slow, how do we improve it?
 This Vissim in-process COM proxy improves Vissim COM performance by making it possible to call Vissim COM interface in the same process space, for example, from inside Driver Model Dll, or from inside Signal Control Dll. Several unconventional yet quite clever "hacking tricks" have been employed (the source code reveals all the details):
 
 - The Vissim Launcher will launch Vissim.exe while injecting a Dll, named VissimComHook.dll, as Operating System hook into Vissim process space
