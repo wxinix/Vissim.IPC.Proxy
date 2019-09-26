@@ -1,0 +1,60 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{D0F7A13E-9088-44F3-857A-A49142917BB7}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="src\Launcher\VissimLauncher.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="src\Hook\VissimComHook.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="src\Proxy\VissimInProcComProxy.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="VissimLauncher">
+        <MSBuild Projects="src\Launcher\VissimLauncher.dproj"/>
+    </Target>
+    <Target Name="VissimLauncher:Clean">
+        <MSBuild Projects="src\Launcher\VissimLauncher.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VissimLauncher:Make">
+        <MSBuild Projects="src\Launcher\VissimLauncher.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VissimComHook">
+        <MSBuild Projects="src\Hook\VissimComHook.dproj"/>
+    </Target>
+    <Target Name="VissimComHook:Clean">
+        <MSBuild Projects="src\Hook\VissimComHook.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VissimComHook:Make">
+        <MSBuild Projects="src\Hook\VissimComHook.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VissimInProcComProxy">
+        <MSBuild Projects="src\Proxy\VissimInProcComProxy.dproj"/>
+    </Target>
+    <Target Name="VissimInProcComProxy:Clean">
+        <MSBuild Projects="src\Proxy\VissimInProcComProxy.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VissimInProcComProxy:Make">
+        <MSBuild Projects="src\Proxy\VissimInProcComProxy.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="VissimLauncher;VissimComHook;VissimInProcComProxy"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="VissimLauncher:Clean;VissimComHook:Clean;VissimInProcComProxy:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="VissimLauncher:Make;VissimComHook:Make;VissimInProcComProxy:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
