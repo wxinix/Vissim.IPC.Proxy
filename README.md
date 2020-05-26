@@ -26,16 +26,16 @@ This Vissim in-process COM proxy improves Vissim COM performance by making it po
 - The IVissim obtained this way, is a pure in-process handle to Vissim's internal COM object. Once we hunt it down, we can do the normal things we used to do with the standard Vissim COM interfaces. Imagination will be your limit! 
 
 # Usage
-This blog article provides a sample on how to use it with C++. http://blog.wupingxin.net/2018/04/12/dissecting-vissim-com-internal-from-inside-out-7-installation-and-a-sample-in-c/
+This blog article provides a sample on how to use it with C++. http://blog.wupingxin.net/dissecting-vissim-com-internal-from-inside-out-7-installation-and-a-sample-in-c/
 
 # More readings
 
-- http://blog.wupingxin.net/2018/06/10/advanced-vissim-com-programming-1-vissims-com-thread-model-and-instance-model/
-- http://blog.wupingxin.net/2015/05/22/dissecting-vissim-com-internal-1/
-- http://blog.wupingxin.net/2015/05/26/dissecting-vissim-com-internal-from-inside-out-2/
-- http://blog.wupingxin.net/2015/06/05/dissecting-vissim-com-internal-from-inside-out-3/
-- http://blog.wupingxin.net/2017/11/07/dissecting-vissim-com-internal-from-inside-out-4-a-loop-hole-for-a-perfect-solution/
-- http://blog.wupingxin.net/2018/04/08/dissecting-vissim-com-internal-from-inside-out-5-a-binary-fix-up-for-vissim-in-process-com/
-- http://blog.wupingxin.net/2018/04/10/dissecting-vissim-com-internal-from-inside-out-6-check-out-the-real-horsepower/
-- http://blog.wupingxin.net/2018/04/12/dissecting-vissim-com-internal-from-inside-out-7-installation-and-a-sample-in-c/
-- http://blog.wupingxin.net/2019/04/29/vissim-com-interface-design-a-pitfall-and-a-caveat/
+- http://blog.wupingxin.net/advanced-vissim-com-programming-1-vissims-com-thread-model-and-instance-model/
+- http://blog.wupingxin.net/dissecting-vissim-com-internal-1/
+- http://blog.wupingxin.net/dissecting-vissim-com-internal-from-inside-out-2/
+- http://blog.wupingxin.net/dissecting-vissim-com-internal-from-inside-out-3/
+- http://blog.wupingxin.net/dissecting-vissim-com-internal-from-inside-out-4-a-loop-hole-for-a-perfect-solution/
+- http://blog.wupingxin.net/dissecting-vissim-com-internal-from-inside-out-5-a-binary-fix-up-for-vissim-in-process-com/
+- http://blog.wupingxin.net/dissecting-vissim-com-internal-from-inside-out-6-check-out-the-real-horsepower/
+- http://blog.wupingxin.net/dissecting-vissim-com-internal-from-inside-out-7-installation-and-a-sample-in-c/
+- http://blog.wupingxin.net/vissim-com-interface-design-a-pitfall-and-a-caveat/
