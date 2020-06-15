@@ -1,7 +1,7 @@
 { /*
   MIT License
 
-  Copyright (c) 2019 wxinixs@kld
+  Copyright (c) 2018-2020 Wuping Xin
   https://github.com/wxinix
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -34,13 +34,8 @@ unit VissimInProcComProxyLib_TLB;
 interface
 
 uses
-  System.Classes,
-  System.Variants,
-  System.Win.StdVCL,
-  Vcl.Graphics,
-  Vcl.OleServer,
-  Winapi.ActiveX,
-  Winapi.Windows;
+  System.Classes, System.Variants, System.Win.StdVCL, Vcl.Graphics, Vcl.OleServer,
+  Winapi.ActiveX, Winapi.Windows;
 
 // *********************************************************************//
 // GUIDS declared in the TypeLibrary. Following prefixes are used:

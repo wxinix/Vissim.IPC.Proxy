@@ -1,7 +1,7 @@
 { /*
   MIT License
 
-  Copyright (c) 2019 wxinixs@kld
+  Copyright (c) 2018-2020 Wuping Xin
   https://github.com/wxinix
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,10 +30,7 @@ unit VissimInProcComProxyObject;
 interface
 
 uses
-  ActiveX,
-  ComObj,
-  StdVcl,
-  VissimInProcComProxyLib_TLB;
+  ActiveX, ComObj, StdVcl, VissimInProcComProxyLib_TLB;
 
 type
   TVissimInProcComProxy = class(TAutoObject, IVissimInProcComProxy)
@@ -50,17 +47,12 @@ type
 implementation
 
 uses
-  ComServ,
-  System.SysUtils,
-  Windows,
-  ActiveScriptingLib;
+  ComServ, System.SysUtils, Windows, ActiveScriptingLib;
 
 const
-  SFailToGetVissimHostSite =
-    'Fail to get Vissim host site with error code [%d]';
-  SFailToGetVissimInterface =
-    'Fail to get Vissim interface with error code [%d]';
-  SUnassignedScriptEngine = 'Unassigned script engine.';
+  SFailToGetVissimHostSite  = 'Fail to get Vissim host site with error code [%d]';
+  SFailToGetVissimInterface = 'Fail to get Vissim interface with error code [%d]';
+  SUnassignedScriptEngine   = 'Unassigned script engine.';
 
 destructor TVissimInProcComProxy.Destroy;
 begin
@@ -97,16 +89,13 @@ begin
   comResult := vbsEngine.GetScriptSite(scriptSiteIid, ptrScriptSite);
 
   if comResult <> S_OK then
-    raise EOleSysError.Create(Format(SFailToGetVissimHostSite, [comResult]),
-      comResult, 0);
+    raise EOleSysError.Create(Format(SFailToGetVissimHostSite, [comResult]), comResult, 0);
 
   scriptSite := IActiveScriptSite(ptrScriptSite);
-  comResult := scriptSite.GetItemInfo(PChar(vissimName), SCRIPTINFO_IUNKNOWN,
-    Result, typeInfo);
+  comResult := scriptSite.GetItemInfo(PChar(vissimName), SCRIPTINFO_IUNKNOWN, Result, typeInfo);
 
   if comResult <> S_OK then
-    raise EOleSysError.Create(Format(SFailToGetVissimInterface, [comResult]),
-      comResult, 0);
+    raise EOleSysError.Create(Format(SFailToGetVissimInterface, [comResult]), comResult, 0);
 end;
 
 procedure TVissimInProcComProxy.Initialize;
@@ -114,8 +103,7 @@ begin
   inherited;
 end;
 
-procedure TVissimInProcComProxy.SetVissimScriptEngine(const scriptEngine
-    : IUnknown);
+procedure TVissimInProcComProxy.SetVissimScriptEngine(const scriptEngine: IUnknown);
 begin
   FScriptEngine := scriptEngine;
 end;

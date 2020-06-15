@@ -1,7 +1,7 @@
 { /*
   MIT License
 
-  Copyright (c) 2019 wxinixs@kld
+  Copyright (c) 2018-2020 Wuping Xin
   https://github.com/wxinix
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -30,8 +30,7 @@ unit ActiveScriptingLib;
 interface
 
 uses
-  Windows,
-  ActiveX;
+  WinApi.ActiveX, WinApi.Windows;
 
 // *********************************************************************//
 // GUIDS declared in the TypeLibrary. Following prefixes are used:
