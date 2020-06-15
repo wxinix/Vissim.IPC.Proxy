@@ -1,5 +1,5 @@
 # vissim-ipcp
-Vissim in-process COM proxy, BOOST Vissim performance x15 faster!
+Vissim in-process COM proxy, BOOST Vissim performance up to x15 faster!
 
 # About
 Vissim is the most widely-used and industry microscopic traffic simulator developed by PTV. It provides a COM-based interface for user-customized applications, invoking Vissim as an out-of-process automation server.
