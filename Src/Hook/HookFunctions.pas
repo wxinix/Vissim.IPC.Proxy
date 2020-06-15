@@ -1,7 +1,7 @@
 { /*
   MIT License
 
-  Copyright (c) 2019 wxinixs@kld
+  Copyright (c) 2018-2020 Wuping Xin
   https://github.com/wxinix
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,40 +31,64 @@ uses
   WinApi.ActiveX;
 
 var
-  CoCreateInstanceNext: function(const clsid: TCLSID; unkOuter: IUnknown;
-    dwClsContext: Longint; const iid: TIID; out pv): HRESULT; stdcall;
+  CoCreateInstanceNext: function(
+    const clsid: TCLSID;
+    unkOuter: IUnknown;
+    dwClsContext: Longint;
+    const iid: TIID;
+    out pv
+    ): HRESULT; stdcall;
 
-  CoRegisterClassObjectNext: function(const clsid: TCLSID; unk: IUnknown;
-    dwClsContext: Longint; flags: Longint; out dwRegister: Longint)
-    : HRESULT; stdcall;
+  CoRegisterClassObjectNext: function(
+    const clsid: TCLSID;
+    unk: IUnknown;
+    dwClsContext: Longint;
+    flags: Longint;
+    out dwRegister: Longint
+    ): HRESULT; stdcall;
 
-  CoRevokeClassObjectNext: function(dwRegister: Longint): HRESULT; stdcall;
+  CoRevokeClassObjectNext: function(
+    dwRegister: Longint
+    ): HRESULT; stdcall;
 
-  CoInitializeExNext: function(pvReserved: Pointer; coInit: Longint)
-    : HRESULT; stdcall;
+  CoInitializeExNext: function(
+    pvReserved: Pointer;
+    coInit: Longint
+    ): HRESULT; stdcall;
 
   CoUninitializeNext: procedure; stdcall;
 
-function CoCreateInstanceCallBack(const clsid: TCLSID; unkOuter: IUnknown;
-  dwClsContext: Longint; const iid: TIID; out pv): HRESULT; stdcall;
+function CoCreateInstanceCallBack(
+  const clsid: TCLSID;
+  unkOuter: IUnknown;
+  dwClsContext: Longint;
+  const iid: TIID;
+  out pv
+  ): HRESULT; stdcall;
 
-function CoRegisterClassObjectCallBack(const clsid: TCLSID; unk: IUnknown;
-  dwClsContext: Longint; flags: Longint; out dwRegister: Longint)
-  : HRESULT; stdcall;
+function CoRegisterClassObjectCallBack(
+  const clsid: TCLSID;
+  unk: IUnknown;
+  dwClsContext: Longint;
+  flags: Longint;
+  out dwRegister: Longint
+  ): HRESULT; stdcall;
 
-function CoRevokeClassObjectCallBack(dwRegister: Longint): HRESULT; stdcall;
+function CoRevokeClassObjectCallBack(
+  dwRegister: Longint
+  ): HRESULT; stdcall;
 
-function CoInitializeExCallBack(pvReserved: Pointer; coInit: Longint)
-  : HRESULT; stdcall;
+function CoInitializeExCallBack(
+  pvReserved: Pointer;
+  coInit: Longint
+  ): HRESULT; stdcall;
 
 procedure CoUninitializeCallback; stdcall;
 
 implementation
 
 uses
-  SysUtils,
-  Windows,
-  VissimInProcComProxyLib_TLB;
+  SysUtils, Windows, VissimInProcComProxyLib_TLB;
 
 function CoCreateInstanceCallBack(const clsid: TCLSID; unkOuter: IUnknown;
   dwClsContext: Longint; const iid: TIID; out pv): HRESULT;
@@ -77,8 +101,7 @@ var
 begin
   Result := CoCreateInstanceNext(clsid, unkOuter, dwClsContext, iid, pv);
 
-  if (clsid = IID_VBScript) and (iid = IID_IActiveScript) and (Result = S_OK)
-  then
+  if (clsid = IID_VBScript) and (iid = IID_IActiveScript) and (Result = S_OK) then
   begin
     vissimInProcComProxy := CoVissimInProcComProxy.Create;
     scriptEngine := IUnknown(pv);
@@ -103,8 +126,7 @@ const
   fmtStr = 'CoRevokeClassObjectCallBack [%d], ThreadId[%d]';
 begin
   {$IFDEF DEBUG}
-  OutputDebugString(PWideChar(Format(fmtStr, [dwRegister,
-          GetCurrentThreadId])));
+  OutputDebugString(PWideChar(Format(fmtStr, [dwRegister, GetCurrentThreadId])));
   {$ENDIF}
   Result := CoRevokeClassObjectNext(dwRegister);
 end;
