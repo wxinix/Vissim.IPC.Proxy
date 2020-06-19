@@ -1,7 +1,7 @@
 { /*
   MIT License
 
-  Copyright (c) 2019 wxinixs@kld
+  Copyright (c) 2018-2020 Wuping Xin
   https://github.com/wxinix
 
   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,54 +29,49 @@ program VissimLauncher;
 {$R *.res}
 
 uses
-  System.SysUtils,
-  Winapi.Windows,
-  madCodeHook;
-
-var
-  StartInfo: TStartupInfo;
-  ProcInfo: TProcessInformation;
-  CreateOK: Boolean;
-  VissimPath: string;
-  HookDllPath: string;
-  CmdParams: string;
-  I: Integer;
+  System.SysUtils, Winapi.Windows, madCodeHook;
 
 begin
   try
+    var hookDllPath :=
     {$IFDEF DEBUG}
-    VissimPath := 'C:\Program Files\PTV Vision\PTV Vissim 11\Exe\vissim110.exe';
-    HookDllPath := 'X:\WX-Codes\VISSIM_APPS\bin\Win64\Debug\VissimComHook.dll';
+      'C:\DEVLIBS\Vissim.IPC.Proxy\Bin\Win64VissimComHook.dll';
     {$ELSE}
-    VissimPath := ExtractFilePath(ParamStr(0)) + 'VISSIM110.exe';
-    HookDllPath := ExtractFilePath(ParamStr(0)) + 'VissimComHook.dll';
+      ExtractFilePath(ParamStr(0)) + 'VissimComHook.dll';
     {$ENDIF}
-    CmdParams := EmptyStr;
 
-    for I := 1 to ParamCount do
-      CmdParams := CmdParams + ' ' + ParamStr(I);
+    var vissimPath :=
+    {$IFDEF DEBUG}
+      'C:\Program Files\PTV Vision\PTV Vissim 2020\Exe\VISSIM200.exe';
+    {$ELSE}
+      ExtractFilePath(ParamStr(0)) + 'VISSIM200.exe';
+    {$ENDIF}
 
-    FillChar(StartInfo, SizeOf(TStartupInfo), #0);
-    FillChar(ProcInfo, SizeOf(TProcessInformation), #0);
+    var cmdParams := EmptyStr;
+    for var I := 1 to ParamCount do cmdParams := cmdParams + ' ' + ParamStr(I);
 
-    StartInfo.cb := SizeOf(TStartupInfo);
+    var startInfo: TStartupInfo;
+    startInfo.cb := SizeOf(TStartupInfo);
+    FillChar(startInfo, SizeOf(TStartupInfo), #0);
 
-    CreateOK := CreateProcessExW(
-      PWideChar(VissimPath),
-      PWideChar(CmdParams),
+    var procInfo: TProcessInformation;
+    FillChar(procInfo, SizeOf(TProcessInformation), #0);
+
+    var createOK := CreateProcessExW(
+      PWideChar(vissimPath),
+      PWideChar(cmdParams),
       nil,
       nil,
       False,
       CREATE_NEW_PROCESS_GROUP + NORMAL_PRIORITY_CLASS,
       nil,
       nil,
-      StartInfo,
-      ProcInfo,
-      PChar(HookDllPath));
+      startInfo,
+      procInfo,
+      PChar(hookDllPath));
 
-    if CreateOK then
-      WriteLn('Successfully launched Vissim');
-
+    if createOK then
+      WriteLn('Successfully launched Vissim.');
   except
     on E: Exception do
       WriteLn(E.ClassName, ': ', E.Message);
