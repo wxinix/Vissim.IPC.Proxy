@@ -107,13 +107,13 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
-        <VerInfo_Keys>FileDescription=Vissim In Process COM Proxy;FileVersion=1.0.0.58;ProgramID=Vissim.IPCP.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0;CompanyName=</VerInfo_Keys>
+        <VerInfo_Keys>FileDescription=Vissim In Process COM Proxy;FileVersion=1.0.0.59;ProgramID=Vissim.IPCP.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0;CompanyName=</VerInfo_Keys>
         <DCC_AssertionsAtRuntime>false</DCC_AssertionsAtRuntime>
         <DCC_IOChecking>false</DCC_IOChecking>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <Manifest_File>(None)</Manifest_File>
         <VerInfo_AutoIncVersion>true</VerInfo_AutoIncVersion>
-        <VerInfo_Build>58</VerInfo_Build>
+        <VerInfo_Build>59</VerInfo_Build>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
