@@ -120,8 +120,8 @@ $(PostBuildEvent)]]></PostBuildEvent>
         <DCC_DebugInformation>0</DCC_DebugInformation>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2_Win64)'!=''">
-        <VerInfo_Build>30</VerInfo_Build>
-        <VerInfo_Keys>CompanyName=Wuping xin;FileDescription=Vissim COM Hook;FileVersion=1.0.0.30;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=Vissim.IPCP.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0;Comments=</VerInfo_Keys>
+        <VerInfo_Build>32</VerInfo_Build>
+        <VerInfo_Keys>CompanyName=Wuping xin;FileDescription=Vissim COM Hook;FileVersion=1.0.0.32;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=Vissim.IPCP.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0;Comments=</VerInfo_Keys>
         <Manifest_File>(None)</Manifest_File>
         <DCC_UnitSearchPath>..\Proxy;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>

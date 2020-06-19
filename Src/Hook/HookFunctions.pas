@@ -91,10 +91,10 @@ uses
   SysUtils, Windows, VissimInProcComProxyLib_TLB;
 
 function CoCreateInstanceCallBack(const clsid: TCLSID; unkOuter: IUnknown;
-  dwClsContext: Longint; const iid: TIID; out pv): HRESULT;
+  dwClsContext: LongInt; const iid: TIID; out pv): HRESULT;
 const
-  IID_VBScript: TGUID      = '{B54F3741-5B07-11CF-A4B0-00AA004A55E8}';
   IID_IActiveScript: TGUID = '{BB1A2AE1-A4F9-11CF-8F20-00805F2CD064}';
+  IID_VBScript: TGUID      = '{B54F3741-5B07-11CF-A4B0-00AA004A55E8}';
 var
   vissimInProcComProxy: IVissimInProcComProxy;
   scriptEngine: IInterface;
