@@ -2,7 +2,7 @@
 Vissim in-process COM proxy, BOOST Vissim performance up to x15 faster!
 
 # About
-Vissim is the most widely-used and industry microscopic traffic simulator developed by PTV. It provides a COM-based interface for user-customized applications, invoking Vissim as an out-of-process automation server.
+Vissim is the most widely-used and industry-leading microscopic traffic simulator developed by PTV. It provides a COM-based interface for user-customized applications, invoking Vissim as an out-of-process automation server.
 
 Vissim COM is convenient and powerful, however, it can be slow especially for loop-intensive applications. Albeit the interface is well designed and comprehensive, it ONLY supports out-of-process call site (except its performance-constrained event-based COM scripting, which is in-process COM). When calling Vissim COM interface in a simstep-by-step fashion, the run time performance could possibly become unacceptable.
 
